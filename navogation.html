@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+			box-sizing: border-box; 
+		}
+		body{
+			background: #000;
+			min-height: 100vh;
+		}
+		#navigation header{
+			position: fixed;
+			top: 0;
+			left: 0;
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			background: #fff;
+			box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+		}
+		#navigation .logo{
+			height: 60px;
+			line-height: 60px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-left: 20px;
+		}
+		#navigation .logo img{
+			height: 60px;
+			width: 60px;
+		}
+		#navigation #toggle{
+			position: absolute;
+			top:0;
+			right: 0;
+			width: 60px;
+			height: 60px;
+			background: #9051ff;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#navigation #toggle::before{
+			content: '';
+			position: absolute;
+			width: 28px;
+			height: 2px;
+			background: #fff;
+			transform: translateY(-5px);
+			transition: 0.2s;	
+		}
+		#navigation #toggle::after{
+			content: '';
+			position: absolute;
+			width: 28px;
+			height: 2px;
+			background: #fff;
+			transform: translateY(5px);
+			transition: 0.2s;	
+		}
+		#navigation #toggle.active::before{
+			transform: translateY(0px) rotate(45deg);
+		}
+		#navigation #toggle.active::after{
+			transform: translateY(0px) rotate(-45deg);
+		}
+		#navigation #toggle.active{
+			background: #f7226a;
+		}
+		#navigation #navbar{
+			position: relative;
+			height: 60px;
+			right: 60px;
+			background: #fff;
+			transition: 0.5s;
+			width: 0px;
+			overflow: hidden;
+		}
+		#navigation #navbar.active{
+			width: 660px;
+		}
+		#navigation #navbar ul{
+			position: relative;
+			display: flex;
+			flex-direction: row;
+		}
+		#navigation #navbar ul li{
+			list-style: none;
+		}
+		#navigation #navbar ul li a{
+			color: #212F3C;
+			height: 60px;
+			line-height: 60px;
+			display: inline-block;
+			text-decoration: none;
+			font-size: 1.2em;
+			padding: 0 15px;
+			letter-spacing: 2px;
+		}
+		#navigation #navbar ul li a:hover{
+			color: #fff;
+			background: #212F3C;
+		}
+		@media (max-width: 991px){
+			#navigation #navbar{
+				position: fixed;
+				bottom: -100%;
+				right: 0;
+				width: 100%;
+				transition: 0.5s;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: calc(100vh - 60px);	
+			}
+			#navigation #navbar.active{
+				height: calc(100vh - 60px);
+				bottom: 0;
+				width: 100%;
+			}
+			#navigation #navbar ul{
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	</style>
+</head>
+<body>
+<section id="navigation">
+<header id="header">
+	<a href="#" class="logo"><img src="img/favicon.png"></a>
+	<div id="toggle"></div>
+	<div id="navbar">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Products</a></li>
+			<li><a href="#">Team</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+</header>
+
+<script type="text/javascript">
+	const header = document.getElementById('header');
+	const toggle = document.getElementById('toggle');
+	const navbar = document.getElementById('navbar');
+
+	document.onclick = function(e){
+		if(e.target.id !== 'header' && e.target.id !== 'toggle' && e.target.id !== 'navbar'){
+			toggle.classList.remove('active');
+			navbar.classList.remove('active');
+		}
+	}
+
+
+
+	toggle.onclick = function(){
+		toggle.classList.toggle('active');
+		navbar.classList.toggle('active');
+	}
+</script>
+</section>
+</body>
+</html>
