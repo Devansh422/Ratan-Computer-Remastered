@@ -110,6 +110,7 @@ section{
       line-height: 60px;
       display: inline-block;
       text-decoration: none;
+      font-family: gilbert;
       font-size: 1.2em;
       padding: 0 15px;
       letter-spacing: 2px;
@@ -509,7 +510,7 @@ padding: 0px 10%;
     }
     #services .container .card .content h3{
       color: #212F3C;
-      font-family: gilbert;
+      font-family: bungee;
       font-size: 3em;
     }
     #services .container .card .content p{
